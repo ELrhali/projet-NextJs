@@ -1,8 +1,8 @@
 import { Column } from "react-table";
-
+//head de table 
 export const AccountTableColumns: Column<any>[] = [
   {
-    Header: "Name",
+    Header: "Namssse",
     accessor: "name",
   },
   {

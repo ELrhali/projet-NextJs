@@ -18,6 +18,7 @@ const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
   const [password, setPassword] = useState("");
   const [subscription, setSubscription] = useState("");
   const [loading, setLoading] = useState(false);
+  //fermer table 
   function handleClose() {
     setOpen(false);
   }
@@ -29,13 +30,15 @@ const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
     setOpen(false);
   }
   return (
-    <Dialog
+    
+    <Dialog 
       open={open}
       onClose={handleClose}
       aria-labelledby="form-dialog-title"
     >
-      <DialogTitle id="form-dialog-title">Add Account</DialogTitle>
+      <DialogTitle  id="form-dialog-title">Add Accountss</DialogTitle>
       <DialogContent>
+      
         <DialogContentText>
           To add a new account, please try to create the credentials from the AZ
           CLI.
@@ -44,7 +47,7 @@ const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
           autoFocus
           margin="dense"
           id="name"
-          label="Name"
+          label="Naaame"
           onChange={({ target }) => setName(target.value)}
           type="text"
           fullWidth
@@ -73,7 +76,7 @@ const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
           id="password"
           label="Password"
           onChange={({ target }) => setPassword(target.value)}
-          type="text"
+          type="Password"
           fullWidth
         />
         <TextField
@@ -87,7 +90,7 @@ const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button disabled={loading} onClick={handleClose} color="primary">
+        <Button disabled={loading} variant="contained" onClick={handleClose} color="secondary">
           Cancel
         </Button>
         <Button

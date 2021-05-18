@@ -6,3 +6,4 @@ export interface IAccount {
   subscription: string;
   tenant: string;
 }
+

@@ -9,7 +9,7 @@ const AccountsTable: React.FC = () => {
     {
       appId: 'test',
       name: 'test',
-      password: 'test',
+      password: '**rrrr****',
       status: 'test',
       subscription: 'test',
       tenant: 'test',
@@ -17,7 +17,7 @@ const AccountsTable: React.FC = () => {
     {
       appId: 'test2',
       name: 'test2',
-      password: 'test2',
+      password: '******',
       status: 'test2',
       subscription: 'test2',
       tenant: 'test2',
@@ -25,7 +25,7 @@ const AccountsTable: React.FC = () => {
     {
       appId: 'test3',
       name: 'test3',
-      password: 'test3',
+      password: '******',
       status: 'test3',
       subscription: 'test3',
       tenant: 'test3',

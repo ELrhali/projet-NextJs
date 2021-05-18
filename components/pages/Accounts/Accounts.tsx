@@ -9,9 +9,11 @@ const Accounts: React.FC = () => {
 
   return (
     <div>
+      <div>
       <AccountsHeader open={open} setOpen={setOpen} />
       <AccountsTable />
       <AddAccount open={open} setOpen={setOpen}></AddAccount>
+    </div>
     </div>
   );
 };
