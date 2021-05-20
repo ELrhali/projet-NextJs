@@ -6,7 +6,7 @@ import Header from "../components/layouts/Header";
 function MyApp({ Component, pageProps }) {
   return (
     <div >
-      <div  className=" flex w-screen h-screen">
+      <div  className=" flex  w-screen h-screen">
         <Sidebar />
         <div className="w-screen ">
           <Header />

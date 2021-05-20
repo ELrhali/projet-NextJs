@@ -12,7 +12,7 @@ const Sidebar = () => {
   const router = useRouter();
   
   return (
-    <div  className="md:w-2/12 w-5/12 h-screen shadow-2xl 	sticky bg-gray-800 bg-opacity-85   ">
+    <div  className="md:w-2/12 w-5/12 h-screen shadow-2xl 	 bg-gray-800 bg-opacity-85   ">
  
       <div className="   py-3 space-y-7 pt-4 flex h-16   justify-around  bg-gray-900 bg-opacity-60">
    
@@ -28,7 +28,7 @@ const Sidebar = () => {
                   "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900  hover  hover:text-blue-600  cursor-pointer"
                 }
               >
-                <HomeIcon className=" bg-white" />
+                <HomeIcon  />
                 <p className="text-white   	">Home</p>
               </div>
             </div>
@@ -40,7 +40,7 @@ const Sidebar = () => {
                   "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900  hover:text-blue-600  cursor-pointer"
                 }
               >
-                <Dashboard className=" bg-white" />
+                <Dashboard  />
                 <p className=" text-white">Dashboard</p>
               </div>
             </div>
@@ -53,31 +53,31 @@ const Sidebar = () => {
                   "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <DirectionsCarOutlinedIcon className=" bg-white" />
+                <DirectionsCarOutlinedIcon />
                 <p className="text-white ">Vehicles</p>
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="#">
+          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/index2">
             <div className="text-white">
               <div
                 className={
                   "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <CancelScheduleSendIcon className=" bg-white" />
+                <CancelScheduleSendIcon />
                 <p className="text-white ">Schedules</p>
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="#">
+          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/tableAc">
             <div className="">
               <div
                 className={
                   "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <PlaylistAddCheckIcon className=" bg-white" />
+                <PlaylistAddCheckIcon />
                 <p className="text-white ">Checklist</p>
               </div>
             </div>

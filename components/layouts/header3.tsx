@@ -21,11 +21,16 @@ import { Badge } from '@material-ui/core';
 import { Menu } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 
+const styles = (theme: Theme) =>
+createStyles({
+
+});
 
 
-
-
-    const Header = () => {
+interface HeaderProps extends WithStyles<typeof styles> {
+  onDrawerToggle: () => void;}
+function Header(props: HeaderProps) {
+  const {  onDrawerToggle } = props;
      
       const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
       const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -74,7 +79,19 @@ import { MenuItem } from '@material-ui/core';
       <AppBar  position="sticky" elevation={0}>
         <Toolbar className="bg-blue-50 sticky">
         <Grid  container spacing={1}  className="bg-white  items-center sm:w-auto">
-          
+        <Hidden smUp>
+              <Grid item>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={onDrawerToggle}
+                  //className={classes.menuButton}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
+            </Hidden>
+            <Grid item xs />
          
             <Grid item >
               <SearchIcon className="text-gray-400 " />
@@ -122,6 +139,6 @@ import { MenuItem } from '@material-ui/core';
       {renderMenu}
     </React.Fragment>
   );
-};
+}
 
 export default Header;
