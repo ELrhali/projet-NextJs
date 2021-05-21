@@ -11,7 +11,7 @@ const CustomersHeader: React.FC<CustomersHeaderProps> = ({ open, setOpen }) => {
     setOpen(true);
   }
   return (
-    <div className="p-5 bg-gray-50 shadow-lg border-gray-600 flex flex-row-reverse content-center items-center">
+    <div className="mx-8 flex flex-row-reverse content-center items-center">
       <div></div>
       <Button
         onClick={openDialog}

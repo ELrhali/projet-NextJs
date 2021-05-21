@@ -5,12 +5,12 @@ import Header from "../components/layouts/Header";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div >
+    <div  className="  h-screen " >
       <div  className=" flex  w-screen h-screen">
         <Sidebar />
-        <div className="w-screen ">
+        <div className="w-screen overflow-y-scroll ">
           <Header />
-          <div className="p-8">
+          <div className="p-8 bg-gray-100 h-screen ">
             <Component {...pageProps} />
           </div>
         </div>

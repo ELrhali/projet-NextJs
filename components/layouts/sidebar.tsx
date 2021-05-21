@@ -12,15 +12,15 @@ const Sidebar = () => {
   const router = useRouter();
   
   return (
-    <div  className="md:w-2/12 w-5/12 h-screen shadow-2xl 	 bg-gray-800 bg-opacity-85   ">
+    <div  className="md:w-1/5 w-4/12 h-screen 	 bg-gray-800 bg-opacity-85   ">
  
       <div className="   py-3 space-y-7 pt-4 flex h-16   justify-around  bg-gray-900 bg-opacity-60">
    
-       <p className="text-2xl  text-gray-200 font-semibold italic ">M A J O R E L</p>
+       <p className="md:text-2xl  text-gray-200 font-semibold italic ">M A J O R E L</p>
 
       </div>
-      <div className="py-5 space-y-14">
-        <div className="space-y-4">
+      <div className="py-3 space-y-10">
+        <div className="space-y-3">
         <ActiveLink activeClassName="bg-gray-900 border-l-2 border-fuchsia-600" href="#">
             <div className="">
               <div
@@ -108,7 +108,7 @@ const Sidebar = () => {
             </div>
           </ActiveLink>
         
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="#">
+          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/customercard">
             <div className="">
               <div
                 className={
@@ -116,7 +116,7 @@ const Sidebar = () => {
                 }
               >
                 <SettingsIcon className=" text-white" />
-                <p className="text-white ">Settings</p>
+                <p className="text-white ">customercard</p>
               </div>
             </div>
           </ActiveLink>

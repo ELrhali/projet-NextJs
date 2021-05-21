@@ -137,9 +137,10 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
         
         </form></div>
         <div >
-        <input type="text " 
+        <textarea cols={4}
+        rows={10}
         placeholder="Add note"
-         style={{ height: 200, width: '100%' ,background:'#EFEFEF'}}
+         style={{  width: '100%' ,background:'#EFEFEF'}}
         /></div>
       </DialogContent>
       
