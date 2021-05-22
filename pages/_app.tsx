@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
         <Sidebar />
         <div className="w-screen overflow-y-scroll ">
           <Header />
-          <div className="p-8 bg-gray-100 h-screen ">
+          <div className="p-8 bg-gray-100 ">
             <Component {...pageProps} />
           </div>
         </div>

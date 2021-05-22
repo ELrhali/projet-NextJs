@@ -11,7 +11,7 @@ interface AddAccountProps {
   open: boolean;
   setOpen: Function;
 }
-const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
+const AddAccounts: React.FC<AddAccountProps> = ({ open, setOpen }) => {
   const [name, setName] = useState("");
   const [appId, setAppId] = useState("");
   const [tenant, setTenant] = useState("");
@@ -106,4 +106,4 @@ const AddAccount: React.FC<AddAccountProps> = ({ open, setOpen }) => {
     </Dialog>
   );
 };
-export default AddAccount;
+export default AddAccounts;
