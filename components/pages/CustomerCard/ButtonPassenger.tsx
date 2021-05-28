@@ -1,28 +1,35 @@
 import { Button } from "@material-ui/core";
 import React from "react";
+import { start } from "repl";
 
 interface CustomersHeaderProps {
   open: boolean;
   setOpen: Function;
 }              
 
-const CustomersHeader: React.FC<CustomersHeaderProps> = ({ open, setOpen }) => {
+const ButtonPassenger: React.FC<CustomersHeaderProps> = ({ open, setOpen }) => {
   function openDialog() {
     setOpen(true);
   }
   return (
-    <div className="p-5 bg-gray-50 shadow-lg border-gray-600 flex flex-row-reverse content-center items-center">      <div></div>
+      
+    <div className="mx-8 flex flex-row justify-between content-center items-center  ">
+      <div >
+      <p className="text-gray-700 text-xl ">Passengers</p>
+     </div>
+      <div >
       <Button
         onClick={openDialog}
         variant="contained"
         color="primary"
         className="p-2"
       >
-        Add Customre
+        New Passenger
       </Button>
+      </div>
+     
     </div>
-    
   );
 };
 
-export default CustomersHeader;
+export default ButtonPassenger;

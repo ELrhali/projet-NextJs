@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +10,9 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
 import { TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import TablePagination from '@material-ui/core/TablePagination';
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -17,14 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       padding: theme.spacing(3),
      margin: 'auto',
-      maxWidth: 500,
+      maxWidth: 520,
     },
     image: {
       width: 120,
       height: 120,
     },
     img: {
-      margin: 10,
+      marginLeft: 10,
       display: 'block',
       maxWidth: '100%',
       maxHeight: '100%',
@@ -40,20 +44,61 @@ const useStyles = makeStyles((theme: Theme) =>
     searchInput: {
       fontSize: theme.typography.fontSize,
     },
+    busnumber :{
+        fontWeight : "bold",
+        color :theme.palette.grey[1000] ,
+
+    },
 
   }),
 );
+
+function createData(image :string, nombre, matricule, phone : number ) {
+  return { image, nombre, matricule, phone  };
+}
+
+const rows = [
+  createData( "1.png ", 11, 523, 22),
+  createData( "1.png ", 11, 145, 22),
+  createData( '4.png' , 35, 'a/40', 36),
+  createData( '3.png' , 36, '', 52),
+  createData( '4.png' , 35, '', 36),
+  createData( "1.png ", 11, '', 22),
+  createData( '4.png' , 35, '', 36),
+  createData( '3.png' , 36, '', 52),
+  createData( '3.png' , 36, '', 52),
+  createData( '3.png' , 36, '', 52),
+];
 const Vehicule: React.FC = () => {
     const classes = useStyles();
+    const [ postNum, setPostNum] = useState(5); // Default number of posts dislplayed
+    function lessClick() {
+      setPostNum(prevPostNum => prevPostNum -3)
+  };
+    function handleClick() {
+      setPostNum(prevPostNum => prevPostNum + 3) // 3 is the number of posts you want to load per click
+    };
     const [open, setOpen] = React.useState(false);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
   
     return (
-   
-     
-        
-      <div className={classes.root}>=
+        <div className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item xs={6}> Vehicule</Grid>
+        <Grid item xs={6}> 
+          <Typography variant="h4" color="textSecondary" component="h4" >
+                Vehicule 
+              </Typography>
+              </Grid>
 
           <Grid item xs={6}>
           
@@ -76,32 +121,33 @@ const Vehicule: React.FC = () => {
             </Toolbar>
       
   </Grid>
-        <Grid item xs={6}>
+            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+               <Grid item xs={6} key={row.matricule}>
              <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container spacing={2}>
-            <Grid item>
+            <Grid item lg={3}>
            
-                <Avatar alt="Bus" src="Bus.png" className={classes.img} />
+                <Avatar alt={row.image} src={row.image} className={classes.img} />
               
             </Grid>
             <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={3}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Bus number
+                  <Typography  gutterBottom className={classes.busnumber}>
+                      
+                   Bus Number : {row.nombre}
                   </Typography>
                   <Typography variant="body2" gutterBottom color="textSecondary">
-                    Matricule
+                   Matricule : {row.matricule}
                   </Typography>
                   <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : 0674865850
+                    Mobile : {row.phone}
                   </Typography>
                 </Grid>
   
-              </Grid>
-              <Grid item>
-               <Toolbar>
+             
+              <Grid item >
+               <Toolbar >
                  <IconButton>
                    <HighlightOffIcon />
                  </IconButton>
@@ -116,211 +162,29 @@ const Vehicule: React.FC = () => {
         </Paper>
       </div>
           </Grid>
-          <Grid item xs={6}>
-          <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-           
-                <Avatar alt="Bus" src="Bus2.jpg" className={classes.img} />
-              
-            </Grid>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={3}>
-                <Grid item xs>
-                  <Typography  gutterBottom variant="subtitle1">
-                    Bus numberss
-                  </Typography>
-                  <Typography variant="body2" gutterBottom color="textSecondary">
-                    Matricule
-                  </Typography>
-                  <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : 0674865850
-                  </Typography>
-                </Grid>
-  
-              </Grid>
-              <Grid item>
-               <Toolbar>
-                 <IconButton>
-                   <HighlightOffIcon />
-                 </IconButton>
-                 <IconButton>
-                   <EditIcon />
-                 </IconButton>
-                  </Toolbar>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-           
-                <Avatar alt="Bus" src="Bus3.jpg" className={classes.img} />
-              
-            </Grid>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={3}>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Bus number
-                  </Typography>
-                  <Typography variant="body2" gutterBottom color="textSecondary">
-                    Matricule
-                  </Typography>
-                  <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : 0674865850
-                  </Typography>
-                </Grid>
-  
-              </Grid>
-              <Grid item>
-               <Toolbar>
-                 <IconButton>
-                   <HighlightOffIcon />
-                 </IconButton>
-                 <IconButton>
-                   <EditIcon />
-                 </IconButton>
-                 
-                  </Toolbar>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-           
-                <Avatar alt="Bus" src="Bus2.jpg" className={classes.img} />
-              
-            </Grid>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={3}>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Bus number
-                  </Typography>
-                  <Typography variant="body2" gutterBottom color="textSecondary">
-                    Matricule
-                  </Typography>
-                  <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : 0674865850
-                  </Typography>
-                </Grid>
-  
-              </Grid>
-              <Grid item>
-               <Toolbar>
-                 <IconButton>
-                   <HighlightOffIcon />
-                 </IconButton>
-                 <IconButton>
-                   <EditIcon />
-                 </IconButton>
-                 
-                  </Toolbar>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-           
-                <Avatar alt="Bus" src="Bus3.jpg" className={classes.img} />
-              
-            </Grid>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={3}>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Bus number
-                  </Typography>
-                  <Typography variant="body2" gutterBottom color="textSecondary">
-                    Matricule
-                  </Typography>
-                  <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : 0674865850
-                  </Typography>
-                </Grid>
-  
-              </Grid>
-              <Grid item>
-               <Toolbar>
-                 <IconButton>
-                   <HighlightOffIcon />
-                 </IconButton>
-                 <IconButton>
-                   <EditIcon />
-                 </IconButton>
-                 
-                  </Toolbar>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-           
-                <Avatar alt="Bus" src="Bus.png" className={classes.img} />
-              
-            </Grid>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={3}>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Bus number
-                  </Typography>
-                  <Typography variant="body2" gutterBottom color="textSecondary">
-                    Matricule
-                  </Typography>
-                  <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : 0674865850
-                  </Typography>
-                </Grid>
-  
-              </Grid>
-              <Grid item>
-               <Toolbar>
-                 <IconButton>
-                   <HighlightOffIcon />
-                 </IconButton>
-                 <IconButton>
-                   <EditIcon />
-                 </IconButton>
-                 
-                  </Toolbar>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
-          </Grid>
-        
-        </Grid>
-        </div>
-     
+            ))}      
+      </Grid>
+      <div className="bg-gray-100 w-full">
+      <TablePagination
+       rowsPerPageOptions={[ { label: 'All', value: -1 }]}
+       colSpan={3}
     
+       //shape="rounded"
+       count={rows.length}
+       rowsPerPage={rowsPerPage}
+       page={page}
+       component="div"
+
+       SelectProps={{
+         inputProps: { 'aria-label': 'rows per page' },
+         native: true,
+       }}
+       onChangePage={handleChangePage}
+       onChangeRowsPerPage={handleChangeRowsPerPage}
+  
+      />
+      </div>
+        </div>
     );
   };
   export default Vehicule;
-  

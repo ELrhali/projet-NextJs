@@ -13,8 +13,10 @@ function MyApp({ Component, pageProps }) {
           <div className="p-8 bg-gray-100 ">
             <Component {...pageProps} />
           </div>
+       
         </div>
       </div>
+     
     </div>
   );
 }

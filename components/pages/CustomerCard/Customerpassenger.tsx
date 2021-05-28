@@ -9,6 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
 import { useState } from 'react';
+import ButtonPassenger from './ButtonPassenger';
+import NewPassenger from './NewPassenger';
 
 const useStyles = makeStyles({
   table: {
@@ -42,13 +44,19 @@ export default function BasicTable() {
 };
   function handleClick() {
     setPostNum(prevPostNum => prevPostNum + 3) // 3 is the number of posts you want to load per click
-  }
+  };
+  const [open, setOpen] = React.useState(false);
+
 
   return (
     <TableContainer component={Paper}>
+      <div className="py-5">
+        <ButtonPassenger open={open} setOpen={setOpen} />
+        <NewPassenger open={open} setOpen={setOpen} ></NewPassenger>
+      </div>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow > 
+        <TableHead className="bg-gray-50">
+          <TableRow  > 
           <TableCell   ></TableCell>
             <TableCell align="center"  >Name</TableCell>
             <TableCell align="center" >RFID ID</TableCell>
@@ -73,7 +81,7 @@ export default function BasicTable() {
           ))}
         </TableBody>
       </Table>
-      <div align="center">
+      <div className="flex flex-row justify-between content-center items-center">
       <Button  color="primary" onClick={handleClick} >Show More</Button>
       <Button color="primary" onClick={lessClick}>Show Less</Button>
       </div>

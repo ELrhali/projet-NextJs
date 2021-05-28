@@ -1,4 +1,5 @@
 import { Column } from "react-table";
+import Button from '@material-ui/core/Button';
 //head de table 
 export const AccountTableColumns: Column<any>[] = [
   {
@@ -17,8 +18,9 @@ export const AccountTableColumns: Column<any>[] = [
     Header: "Password",
     accessor: "password",
   },
-  {
-    Header: "Subscription",
-    accessor: "subscription",
-  },
+     /* {
+      Header: "Actions",
+      Cell: ({ row }) => <Button variant="contained">Default</Button> ,
+    },*/
+  
 ];

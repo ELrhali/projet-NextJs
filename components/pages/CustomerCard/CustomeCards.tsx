@@ -1,7 +1,11 @@
 import React from "react";
 import Customerpassenger from "./Customerpassenger";
 import GeneralInfos from "./GeneralInfos";
-import PassengerTable from "./PassengerTable";
+import Gridpath from "./Gridpath";
+import MapsPath from "./MapsPath";
+
+
+import Pathstable from "./Pathstable";
 
 
 
@@ -20,9 +24,17 @@ const Customer: React.FC = () => {
       <Customerpassenger />
       
     </div>
-   
-<div className="mt-10 ">
-<PassengerTable /></div>
+   <div className=" mt-10 md:flex space-x-4 w-full ">
+<div className="md:flex-1  md:w-9/12">
+<Pathstable /></div>
+<div className="md:flex-1 md:w-3/12 ">
+<Gridpath />
+
+</div >
+</div>
+<div className="mt-10">
+<MapsPath />
+</div>
     </div>
   );
 };

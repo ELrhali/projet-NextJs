@@ -1,26 +1,20 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import HelpIcon from '@material-ui/icons/Help';
-import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import SearchIcon from '@material-ui/icons/Search';
 import { TextField } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import { Badge } from '@material-ui/core';
 import { Menu } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import ForumIcon from '@material-ui/icons/Forum';
+import Divider from '@material-ui/core/Divider';
 
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 
@@ -86,7 +80,7 @@ import ForumIcon from '@material-ui/icons/Forum';
             </IconButton>
             <p>Notifications</p>
           </MenuItem>
-          <MenuItem>
+      <MenuItem>
             <IconButton aria-label="show 4 new mails" color="inherit">
               
               <Badge variant="dot" color="error">
@@ -97,14 +91,14 @@ import ForumIcon from '@material-ui/icons/Forum';
           </MenuItem>
           
           <MenuItem onClick={handleProfileMenuOpen}>
-            <IconButton
+          <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
               color="inherit"
             >
-             <ForumIcon className="text-gray-400"/>
-            </IconButton>
+           <AccountCircle className="text-gray-400"/>
+          </IconButton>
             <p>Profile</p>
           </MenuItem>
         </Menu>
@@ -113,7 +107,7 @@ import ForumIcon from '@material-ui/icons/Forum';
     <React.Fragment>
         
       <AppBar  position="sticky" elevation={0}>
-        <Toolbar className="md:w-auto bg-blue-50 sticky">
+        <Toolbar className="md:w-auto bg-gradient-to-r from-gray-50  via-white to-gray-50 sticky">
         <Grid  container spacing={1}  className="bg-white  items-center sm:w-auto">
           
          
@@ -131,11 +125,13 @@ import ForumIcon from '@material-ui/icons/Forum';
               />
             </Grid>
             </Grid>
-          <Grid container spacing={1} alignItems="center">
+          <Grid container spacing={3} alignItems="center">
            
             <Grid item xs />
+            
             <Grid item className=" hidden md:flex">
               <Tooltip title="Alerts • No alerts">
+                
                 <IconButton color="inherit">
                 <Badge variant="dot" color="error">
                   <ForumIcon className="text-gray-400"/>

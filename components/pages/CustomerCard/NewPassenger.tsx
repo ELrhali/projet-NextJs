@@ -4,41 +4,26 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import {  LinearProgress } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const currencies = [
-  {
-    value: 'AA',
-    label: 'aa',
-  },
-  {
-    value: 'BB',
-    label: 'bb',
-  },
-  {
-    value: 'CC',
-    label: 'cc',
-  },
-  {
-    value: 'DD',
-    label: 'ee',
-  },
-];
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       '& .MuiTextField-root': {
-        margin: theme.spacing(3),
+        margin: theme.spacing(2),
         width: '40ch',
       },
       flexGrow: 1,  
       
     },
+    address: {
+        width: '90ch',
+      },
     paper: {
       padding: theme.spacing(3),
       textAlign: 'center',
@@ -50,16 +35,14 @@ interface AddCustomerProps{
     open : boolean ;
     setOpen :Function ;
 
-}
-const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
-  const [typeCustomer ,setTypeCustomer]=useState("");
-  const [NameCustomer,setNameCustomer]=useState("");
+};
+const NewPassenger: React.FC<AddCustomerProps> = ({open , setOpen}) => {
+  const [FirstNamePassenger ,setFirstNamePassenger]=useState("");
+  const [LastNamePassenger,setLastNamePassenger]=useState("");
 
-  const [AddressCustomer,setAddressCustomer]=useState("");
-  const [CityCustomer,setCityCustomer]=useState("");
-  const [PhoneCustomer,setPhoneCustomer]=useState("");
-  const [EmailCustomer,setEmailCustomer]=useState("");
-  const [AddNote,setAddNote]=useState("");
+  const [RfidId,setRfidId]=useState("");
+  const  [PhonePassenger,setPhonePassenger]=useState("");
+  const  [AdressePassenger,setAdressePassenger]=useState("");
   const [loading, setLoading] = useState(false);
 
   const classes = useStyles();
@@ -80,93 +63,81 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
      fullWidth
         maxWidth="md"
     aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Accountss</DialogTitle>
+        <DialogTitle id="form-dialog-title">New Vehicule</DialogTitle>
       <DialogContent >
         <div>
       <form className={classes.root} noValidate autoComplete="off">
       <TextField
-          select
+          
           autoFocus
           margin="dense"
-          id="TypeCustomer"
+          id="FirstNamePassenger"
           multiline
-          label="Type Customer"
-          onChange={({ target }) => setTypeCustomer(target.value)}
-          helperText="Please select your type"
+          label="First Name"
+          onChange={({ target }) => setFirstNamePassenger(target.value)} 
+        //   helperText="Please select your currency"
         >
-          {currencies.map((option) => (
+          {/* {currencies.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
-          ))}
+          ))} */}
           </TextField>
       
         <TextField
           autoFocus
           margin="dense"
-          id="NameCustomer"
+          id="NamePassenger"
           multiline
-          label="Name Customer "
-          onChange={({ target }) => setNameCustomer(target.value)}
+          label="Last Name "
+          onChange={({ target }) => setLastNamePassenger(target.value)}
           type="text"
         
         />
         <TextField
           autoFocus
           margin="dense"
-          id="AddressCustomer"
+          id="RfidId"
           multiline
-          label="Address Customer"
-          onChange={({ target }) => setAddressCustomer(target.value)}
+          label="RFID ID"
+          onChange={({ target }) => setRfidId(target.value)}
           type="text"
-          
-          
+
         />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="CityCustomer"
-          label="City Customer"
-          onChange={({ target }) => setCityCustomer(target.value)}
-          type="text"
-          
-        />
+       
         <TextField
           autoFocus
           fullWidth
           margin="dense"
           multiline
-          id="PhoneCustomer"
-          label="Phone Customer"
+          id="PhonePassenger"
+          label="Phone"
           //variant="filled" background
-          onChange={({ target }) => setPhoneCustomer(target.value)}
+          onChange={({ target }) => setPhonePassenger(target.value)}
           type="text"
         />
-          <TextField
-          autoFocus
+        </form></div>
+        <div className={classes.address}> 
+        <TextField
+        //   autoFocus
           fullWidth
           margin="dense"
-          id="EmailCustomer"
-          label="Email Customer"
-          onChange={({ target }) => setEmailCustomer(target.value)}
-          type="email"
+          id="AdressePassenger"
+          label="Address"
+          onChange={({ target }) => setAdressePassenger(target.value)}
+          type="text"
         />
-        
-        
-        </form></div>
-        <div >
+        </div>
+        {/* <div >
         <textarea cols={4}
-        rows={8}
-        id="AddNote"
-        onChange={({ target }) => setAddNote(target.value)}
+        rows={20}
         placeholder="Add note"
          style={{  width: '100%' ,background:'#EFEFEF'}}
-        /></div>
+        /></div> */}
       </DialogContent>
-      
 
       <DialogActions>
-        <Button disabled={loading}  variant="contained" color="secondary" onClick={handleClose} >
+        <Button disabled={loading}    variant="contained" onClick={handleClose} color="secondary">
           Cancel
         </Button>
         <Button
@@ -175,13 +146,11 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           variant="contained"
           color="primary"
         >
-          Add Customer
+          Confirm
         </Button>
       </DialogActions>
       {loading && <LinearProgress />}
     </Dialog>
   );
 };
-
-
-export default AddCustomers;
+export default NewPassenger;

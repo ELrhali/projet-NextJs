@@ -11,7 +11,7 @@ const Customer: React.FC = () => {
 
   return (
     <div className="bg-gray-50 " >
-      <div>
+      <div >
       <CustomerHeader open={open} setOpen={setOpen} />
       <CustomerTable/>
        <AddCustomers open={open} setOpen={setOpen}></AddCustomers>

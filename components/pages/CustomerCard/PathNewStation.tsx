@@ -12,15 +12,18 @@ const ButtonNewStation: React.FC<CustomersHeaderProps> = ({ open, setOpen }) => 
   }
   return (
  
-     
+     <div>
       <Button
         onClick={openDialog}
         variant="contained"
         color="primary"
-        className="p-2"
+       
+        className="p-2 text-sm"
+
       >
-        Add Station
+        <p className="text-xs">Add Station</p>
       </Button>
+      </div>
   );  
 };
 

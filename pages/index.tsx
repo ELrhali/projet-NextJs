@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Dashboard from "../components/pages/Dashboard";
+import Home from "../components/pages/Home";
 
 export default function HomePage() {
   return (
@@ -7,7 +7,7 @@ export default function HomePage() {
       <Head>
         <title>Dashboard</title>
       </Head>
-      <Dashboard />
+      <Home />
     </>
   );
 }

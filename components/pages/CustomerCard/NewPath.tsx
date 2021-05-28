@@ -4,11 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import {  LinearProgress } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const currencies = [
@@ -36,7 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(3),
         width: '40ch',
       },
-      flexGrow: 1,  
+      flexGrow: 1, 
+      marginLeft: 20, 
       
     },
     paper: {
@@ -51,15 +50,15 @@ interface AddCustomerProps{
     setOpen :Function ;
 
 }
-const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
-  const [typeCustomer ,setTypeCustomer]=useState("");
-  const [NameCustomer,setNameCustomer]=useState("");
+const Newpath: React.FC<AddCustomerProps> = ({open , setOpen}) => {
+  const [Name ,setName]=useState("");
+  const [Type,setType]=useState("");
 
-  const [AddressCustomer,setAddressCustomer]=useState("");
-  const [CityCustomer,setCityCustomer]=useState("");
-  const [PhoneCustomer,setPhoneCustomer]=useState("");
-  const [EmailCustomer,setEmailCustomer]=useState("");
-  const [AddNote,setAddNote]=useState("");
+  const [From,setFrom]=useState("");
+  const [To,setTo]=useState("");
+  const [StartAt,setStartAt]=useState("");
+  const [EndAt,setEndAt]=useState("");
+
   const [loading, setLoading] = useState(false);
 
   const classes = useStyles();
@@ -80,19 +79,29 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
      fullWidth
         maxWidth="md"
     aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Accountss</DialogTitle>
+        <DialogTitle id="form-dialog-title text-xl text-gray-600">New Path</DialogTitle>
       <DialogContent >
         <div>
       <form className={classes.root} noValidate autoComplete="off">
       <TextField
+          autoFocus
+          margin="dense"
+          id="Name"
+          multiline
+          label="Name "
+          onChange={({ target }) => setName(target.value)}
+          type="text"
+        
+        />
+      <TextField
           select
           autoFocus
           margin="dense"
-          id="TypeCustomer"
+          id="Type"
           multiline
-          label="Type Customer"
-          onChange={({ target }) => setTypeCustomer(target.value)}
-          helperText="Please select your type"
+          label="Type"
+          onChange={({ target }) => setType(target.value)}
+          helperText="Please select your currency"
         >
           {currencies.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -101,72 +110,62 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           ))}
           </TextField>
       
+       
         <TextField
           autoFocus
           margin="dense"
-          id="NameCustomer"
+          id="From"
           multiline
-          label="Name Customer "
-          onChange={({ target }) => setNameCustomer(target.value)}
-          type="text"
-        
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="AddressCustomer"
-          multiline
-          label="Address Customer"
-          onChange={({ target }) => setAddressCustomer(target.value)}
+          label="From"
+          onChange={({ target }) => setFrom(target.value)}
           type="text"
           
           
         />
-        <TextField
+       
+       <TextField
           autoFocus
           margin="dense"
-          id="CityCustomer"
-          label="City Customer"
-          onChange={({ target }) => setCityCustomer(target.value)}
+          id="To"
+          multiline
+          label="To"
+          onChange={({ target }) => setTo(target.value)}
           type="text"
           
+          
         />
-        <TextField
+         <TextField
           autoFocus
-          fullWidth
           margin="dense"
+          id="StartAt"
           multiline
-          id="PhoneCustomer"
-          label="Phone Customer"
-          //variant="filled" background
-          onChange={({ target }) => setPhoneCustomer(target.value)}
+          label="Start At"
+          onChange={({ target }) => setStartAt(target.value)}
           type="text"
+          
+          
         />
-          <TextField
+           <TextField
           autoFocus
-          fullWidth
           margin="dense"
-          id="EmailCustomer"
-          label="Email Customer"
-          onChange={({ target }) => setEmailCustomer(target.value)}
-          type="email"
+          id="EndAt"
+          multiline
+          label="End At"
+          onChange={({ target }) => setEndAt(target.value)}
+          type="text"
+          
+          
         />
+     
         
         
         </form></div>
-        <div >
-        <textarea cols={4}
-        rows={8}
-        id="AddNote"
-        onChange={({ target }) => setAddNote(target.value)}
-        placeholder="Add note"
-         style={{  width: '100%' ,background:'#EFEFEF'}}
-        /></div>
+       
       </DialogContent>
       
 
       <DialogActions>
-        <Button disabled={loading}  variant="contained" color="secondary" onClick={handleClose} >
+        <Button disabled={loading}    variant="contained" onClick={handleClose} color="secondary">
           Cancel
         </Button>
         <Button
@@ -175,7 +174,7 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           variant="contained"
           color="primary"
         >
-          Add Customer
+          Add Vehicule
         </Button>
       </DialogActions>
       {loading && <LinearProgress />}
@@ -184,4 +183,4 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
 };
 
 
-export default AddCustomers;
+export default Newpath;
