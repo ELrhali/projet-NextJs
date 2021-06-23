@@ -72,7 +72,7 @@ const Sidebar = () => {
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="#">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/check">
             <div className="">
               <div
                 className={
@@ -110,7 +110,7 @@ const Sidebar = () => {
             </div>
           </ActiveLink>
         
-      {    <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-fuchsia-600" href="#">
+      {    <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-fuchsia-600" href="/Stt">
             <div className="">
               <div
                 className={

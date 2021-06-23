@@ -18,7 +18,7 @@ const CustomersHeader: React.FC<CustomersHeaderProps> = ({ open, setOpen }) => {
         color="primary"
         className="p-2"
       >
-        Add Customre
+        Add 
       </Button>
     </div>
     

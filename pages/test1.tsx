@@ -1,54 +1,131 @@
-import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { AppointmentModel, ViewState, SchedulerDateTime } from '@devexpress/dx-react-scheduler';
-import {
-  Scheduler, DayView, Appointments, Resources,
-} from '@devexpress/dx-react-scheduler-material-ui';
+import React from 'react';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Grid } from '@material-ui/core';
+import ActiveLink from 'components/layouts/ActiveLink';
+import EditIcon from '@material-ui/icons/Edit';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
-const appointments: Array<AppointmentModel> = [{
-  startDate: '2018-10-31T10:00',
-  endDate: '2018-10-31T11:15',
-  title: 'Meeting',
-  type: 'private',
-}, {
-  startDate: '2018-10-31T07:30',
-  endDate: '2018-10-31T09:00',
-  title: 'Go to a gym',
-  type: 'work',
-}];
-const resources = [{
-  fieldName: 'type',
-  title: 'Type',
-  instances: [
-    { id: 'private', text: 'Private', color: '#EC407A' },
-    { id: 'work', text: 'Work', color: '#7E57C2' },
-  ],
-}];
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      maxWidth: 500,
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
+    avatar: {
+      backgroundColor: red[500],
+    },
+  }),
+);
 
-const Demo: React.SFC = () => {
-  const [currentDate, setCurrentDate] = React.useState<SchedulerDateTime>('2018-10-31');
+export default function RecipeReviewCard() {
+  const classes = useStyles();
+ 
 
   return (
-    <Paper>
-      <Scheduler
-        data={appointments}
-      >
-        <ViewState
-          currentDate={currentDate}
-          onCurrentDateChange={setCurrentDate}
-        />
-        <DayView
-          startDayHour={7}
-          endDayHour={12}
-        />
-
-        <Appointments />
-        <Resources
-          data={resources}
-        />
-      </Scheduler>
-    </Paper>
+    <Grid container spacing={3}>
+       <Grid item xs={6}>
+    <Card className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <ActiveLink activeClassName="" href="/customercard">
+                  <IconButton>
+                 <  EditIcon  />
+                 </IconButton>
+           </ActiveLink>
+         
+           
+        }
+     
+        title="Shrimp and Chorizo Paella"
+        subheader="September 14, 2016"
+      />
+      
+    
+     
+    
+  
+    </Card>
+    </Grid>
+    <Grid item xs={6}>
+    <Card className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title="Shrimp and Chorizo Paella"
+        subheader="September 14, 2016"
+      />
+      
+    
+     
+    
+  
+    </Card>
+    </Grid>
+    <Grid item xs={6}>
+    <Card className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title="Shrimp and Chorizo Paella"
+        subheader="September 14, 2016"
+      />
+      
+    
+     
+    
+  
+    </Card>
+    </Grid>
+    </Grid>
+    
   );
-};
-
-export default Demo;
+}

@@ -11,6 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import TablePagination from '@material-ui/core/TablePagination';
+import  {gql, useQuery} from '@apollo/client';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -52,25 +53,39 @@ const useStyles = makeStyles((theme: Theme) =>
 
   }),
 );
+interface RocketInventory  {
+  numero_bus: number;
+  marque: String, 
+  assurance: String,
+  note:String, 
+  image_bus :String,
+   
+   matricule : number
 
-function createData(image :string, nombre, matricule, phone : number ) {
-  return { image, nombre, matricule, phone  };
+} 
+interface RocketInventoryData {
+  length: number;
+  bus: RocketInventory [];
 }
+const QUERY_Vehicule = gql`
+query AffichierVehicule {
+  bus {
+    assurance
+    marque
+    matricule
+    note
+    numero_bus
+    image_bus 
+  }
+}
+`;
 
-const rows = [
-  createData( "1.png ", 11, 523, 22),
-  createData( "1.png ", 11, 145, 22),
-  createData( '4.png' , 35, 'a/40', 36),
-  createData( '3.png' , 36, '', 52),
-  createData( '4.png' , 35, '', 36),
-  createData( "1.png ", 11, '', 22),
-  createData( '4.png' , 35, '', 36),
-  createData( '3.png' , 36, '', 52),
-  createData( '3.png' , 36, '', 52),
-  createData( '3.png' , 36, '', 52),
-];
+
 const Vehicule: React.FC = () => {
+  const { data, loading, error } = useQuery<RocketInventoryData>(QUERY_Vehicule);
+
     const classes = useStyles();
+   
     const [ postNum, setPostNum] = useState(5); // Default number of posts dislplayed
     function lessClick() {
       setPostNum(prevPostNum => prevPostNum -3)
@@ -90,12 +105,21 @@ const Vehicule: React.FC = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  
+  if (loading) {
+    return <h2>Loading.....</h2>;
+  }
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+
     return (
         <div className={classes.root}>
-        <Grid container spacing={3}>
-        <Grid item xs={6}> 
-          <Typography variant="h4" color="textSecondary" component="h4" >
+          <Grid container spacing={3}>
+            <Grid item xs={6}> 
+            <Typography variant="h4" color="textSecondary" component="h4" >
                 Vehicule 
               </Typography>
               </Grid>
@@ -121,27 +145,27 @@ const Vehicule: React.FC = () => {
             </Toolbar>
       
   </Grid>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-               <Grid item xs={6} key={row.matricule}>
+            {data && data.bus.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row , i)  => (
+               <Grid item xs={6} key={i}>
              <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container spacing={2}>
             <Grid item lg={3}>
            
-                <Avatar alt={row.image} src={row.image} className={classes.img} />
+                <Avatar alt="" src="" className={classes.img} />
               
             </Grid>
             <Grid item xs={12} sm container>
                 <Grid item xs>
                   <Typography  gutterBottom className={classes.busnumber}>
                       
-                   Bus Number : {row.nombre}
+                   Bus Number : {row.numero_bus}
                   </Typography>
                   <Typography variant="body2" gutterBottom color="textSecondary">
                    Matricule : {row.matricule}
                   </Typography>
                   <Typography variant="body2"  gutterBottom color="textSecondary">
-                    Mobile : {row.phone}
+                    Mobile : 0685269536
                   </Typography>
                 </Grid>
   
@@ -170,7 +194,7 @@ const Vehicule: React.FC = () => {
        colSpan={3}
     
        //shape="rounded"
-       count={rows.length}
+       count={20}
        rowsPerPage={rowsPerPage}
        page={page}
        component="div"

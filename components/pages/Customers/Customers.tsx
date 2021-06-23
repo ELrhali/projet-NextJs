@@ -10,7 +10,7 @@ const Customer: React.FC = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="bg-gray-50 " >
+    <div  >
       <div >
       <CustomerHeader open={open} setOpen={setOpen} />
       <CustomerTable/>

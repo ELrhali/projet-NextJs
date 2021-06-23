@@ -7,7 +7,7 @@ export default function VehiculePage() {
         <Head>
           <title>Schedule</title>
         </Head>
-        <div className="bg-gray-100	">
+        <div className="bg-gray-100	h-screen">
           <Agendee />
           </div>
       </>

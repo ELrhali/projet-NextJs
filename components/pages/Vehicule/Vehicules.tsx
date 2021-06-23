@@ -11,7 +11,7 @@ const Vehicule: React.FC = () => {
    <div>
    
       <VehiculeHeader open={open} setOpen={setOpen} />
-      <VehiculeCard />
+          <VehiculeCard />
        <AddVehicule open={open} setOpen={setOpen}></AddVehicule>
        
     

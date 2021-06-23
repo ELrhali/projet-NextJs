@@ -10,34 +10,74 @@ import {  LinearProgress } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
+import { gql, useMutation } from '@apollo/client';
+interface RocketInventory  {
+  id: number;
+  email: String, 
+  nom_client: String,
+   note_client:String, 
+   tel_client: String, 
+   type_client: String, 
+   ville_client: String, 
+   address_client: String,
+   image_client: String,
+   zip : number;
+} 
+interface RocketInventoryData {
+  client: RocketInventory [];
+}
+const USER_MUTATION = gql`
+mutation addClient( $email: String, 
+$nom_client: String,
+ $note_client:String, 
+ $tel_client: String, 
+ $type_client: String, 
+ $ville_client: String, 
+ $address_client: String,
+ $image_client: String,
+ $zip :String) {
+  insert_client
+  (objects: {
+    email: $email, 
+    nom_client: $nom_client,
+     note_client: $note_client, 
+     tel_client: $tel_client, 
+     type_client: $type_client, 
+     ville_client:$ville_client, 
+     image_client:$image_client,
+     address_client: $address_client,
+     zip: $zip}) {
+    affected_rows
+  }
+}
+
+`;
 
 const currencies = [
   {
-    value: 'AA',
-    label: 'aa',
+    value: 'Individue ',
+    label: 'individue ',
   },
   {
-    value: 'BB',
-    label: 'bb',
+    value: 'Société',
+    label: 'société',
   },
-  {
-    value: 'CC',
-    label: 'cc',
-  },
-  {
-    value: 'DD',
-    label: 'ee',
-  },
+  
 ];
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(3),
-        width: '40ch',
-      },
+     
       flexGrow: 1,  
       
+    },
+    textfiled1: {
+      margin: theme.spacing(3),
+      width: '40ch',
+    },
+    textfiled : {
+      width: '20ch',
+      margin: theme.spacing(3),
     },
     paper: {
       padding: theme.spacing(3),
@@ -49,16 +89,20 @@ const useStyles = makeStyles((theme: Theme) =>
 interface AddCustomerProps{
     open : boolean ;
     setOpen :Function ;
+   
 
 }
 const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
+  const [client, { error, data }] = useMutation<RocketInventory>(USER_MUTATION)
   const [typeCustomer ,setTypeCustomer]=useState("");
   const [NameCustomer,setNameCustomer]=useState("");
 
+const [ZipCustomer,setZipCustomer]=useState("");
   const [AddressCustomer,setAddressCustomer]=useState("");
   const [CityCustomer,setCityCustomer]=useState("");
   const [PhoneCustomer,setPhoneCustomer]=useState("");
   const [EmailCustomer,setEmailCustomer]=useState("");
+  const [ImageCustomer,setImageCustomer]=useState("");
   const [AddNote,setAddNote]=useState("");
   const [loading, setLoading] = useState(false);
 
@@ -67,12 +111,32 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
   function handleClose() {
     setOpen(false);
   }
-  async function addcustomer(){
-    setLoading(true);
-    console.log();
-    setLoading(false);
-    setOpen(false);
+
+  const addcustomer =() =>{
+  
+    client({
+      variables: {
+        type_client: typeCustomer ,
+        nom_client: NameCustomer,
+        note_client: AddNote ,
+        zip: ZipCustomer,
+        tel_client: PhoneCustomer,
+        address_client : AddressCustomer ,
+        ville_client : CityCustomer ,
+        email : EmailCustomer ,
+        image_client : ImageCustomer,
+      }
+      
+    })
+  if( error){
+    console.log(error);
   }
+  console.log(data);
+  setOpen(false);
+  setLoading(true);
+  setLoading(false);
+  }
+  ;
   return(
     <Dialog 
      open={open}
@@ -80,11 +144,12 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
      fullWidth
         maxWidth="md"
     aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Accountss</DialogTitle>
+        <DialogTitle id="form-dialog-title">New Customer</DialogTitle>
       <DialogContent >
         <div>
       <form className={classes.root} noValidate autoComplete="off">
       <TextField
+       className={classes.textfiled1}
           select
           autoFocus
           margin="dense"
@@ -95,6 +160,7 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           helperText="Please select your type"
         >
           {currencies.map((option) => (
+            
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
@@ -102,6 +168,7 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           </TextField>
       
         <TextField
+         className={classes.textfiled1}
           autoFocus
           margin="dense"
           id="NameCustomer"
@@ -112,6 +179,7 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
         
         />
         <TextField
+         className={classes.textfiled1}
           autoFocus
           margin="dense"
           id="AddressCustomer"
@@ -126,12 +194,24 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           autoFocus
           margin="dense"
           id="CityCustomer"
-          label="City Customer"
+          className={classes.textfiled}
+          label="City "
           onChange={({ target }) => setCityCustomer(target.value)}
           type="text"
           
         />
+          <TextField
+          autoFocus
+          className={classes.textfiled}
+          margin="dense"
+          id="ZipCustomer"
+          label="ZIP "
+          onChange={({ target }) => setZipCustomer(target.value)}
+          type="text"
+          
+        />
         <TextField
+         className={classes.textfiled1}
           autoFocus
           fullWidth
           margin="dense"
@@ -143,6 +223,7 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           type="text"
         />
           <TextField
+           className={classes.textfiled1}
           autoFocus
           fullWidth
           margin="dense"
@@ -150,6 +231,18 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           label="Email Customer"
           onChange={({ target }) => setEmailCustomer(target.value)}
           type="email"
+          placeholder="exemple@gmail.com"
+        />
+           <TextField
+          
+          autoFocus
+          fullWidth
+          margin="dense"
+          id="ImageCustomer"
+          label="Link Image"
+          onChange={({ target }) => setImageCustomer(target.value)}
+          type="email"
+          placeholder="exemple@gmail.com"
         />
         
         
@@ -170,7 +263,7 @@ const AddCustomers: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           Cancel
         </Button>
         <Button
-          disabled={loading}
+          // disabled={loading}
           onClick={addcustomer}
           variant="contained"
           color="primary"

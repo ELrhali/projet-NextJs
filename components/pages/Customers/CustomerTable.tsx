@@ -1,12 +1,5 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { Button } from '@material-ui/core';
-import { useState } from 'react';
+
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { IconButton } from '@material-ui/core';
@@ -24,8 +17,10 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ActiveLink from 'components/layouts/ActiveLink';
+import { useQuery, gql } from '@apollo/client';
+import QUERY_Client from '../query/QueryClient';
 
-
+ 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -65,51 +60,53 @@ const useStyles = makeStyles((theme: Theme) =>
 
   }),
 );
-
-function createData(image :string, nombre, adresse, phone : number ) {
-  return { image, nombre, adresse, phone  };
+interface RocketInventory  {
+  id_client: number;
+  email: String, 
+  nom_client: String,
+   note_client:String, 
+   tel_client: String, 
+   type_client: String, 
+   ville_client: String, 
+   address_client : String,
+   image_client: String,
+   zip : number
+} 
+interface RocketInventoryData {
+  length: number;
+  client: RocketInventory [];
 }
 
-const rows = [
-  createData( "1.png ", 11, 'tanger ...', 22),
-  createData( "4.png ", 11, '', 22),
-  createData( '4.png' , 35, '', 36),
-  createData( '3.png' , 36, '', 52),
-  createData( '4.png' , 35, '', 36),
-  createData( "1.png ", 11, '', 22),
-  createData( '4.png' , 35, '', 36),
-  createData( '4.png' , 36, '', 52),
-  createData( '3.png' , 36, '', 52),
-  createData( '3.png' , 36, '', 52),
-];
 const Customer: React.FC = () => {
+  const { data, loading, error } = useQuery<RocketInventoryData>(QUERY_Client);
+
     const classes = useStyles();
-    const [ postNum, setPostNum] = useState(5); // Default number of posts dislplayed
-    function lessClick() {
-      setPostNum(prevPostNum => prevPostNum -3)
-  };
-    function handleClick() {
-      setPostNum(prevPostNum => prevPostNum + 3) // 3 is the number of posts you want to load per click
-    };
-    const [open, setOpen] = React.useState(false);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
-
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (event, newPage: number) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  
+  if (loading) {
+    return <h2>Loading.....</h2>;
+  }
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+
+console.log(data);
     return (
         <div className={classes.root}>
         <Grid container spacing={3}>
         <Grid item xs={6}> 
-          <Typography variant="h4" color="textSecondary" component="h4" >
-                Vehicule 
+          <Typography variant="h4" color="textSecondary"  component="h4" >
+                Customer 
               </Typography>
               </Grid>
 
@@ -134,32 +131,34 @@ const Customer: React.FC = () => {
             </Toolbar>
       
   </Grid>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-              <Grid item xs={6} key={row.nombre}>
+            {data && data.client.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row , i) => (
+              <Grid item xs={6} key={i}>
               <div className={classes.root}>
          <Paper className={classes.paper}>
            <Grid container spacing={2}>
-             <Grid item lg={3}>
-                 <Avatar alt={row.image} src={row.image} className={classes.img} />
-             </Grid>
+           <Grid item lg={3}>
+           
+                <Avatar  src={row.image_client  } className={classes.img} />
+              
+            </Grid>
              <Grid item xs={12} sm container>
                  <Grid item xs>
                    <Typography gutterBottom className={classes.busnumber}>
-                   Bus Number : {row.nombre}
+                   {row.nom_client}
                    </Typography>
                    <Typography variant="body2" gutterBottom color="textSecondary">
-                   Address : {row.adresse}
+                   Address : {row.address_client}
                    </Typography>
                    <Typography variant="body2"  gutterBottom color="textSecondary">
-                   Mobile : {row.phone}
+                   Mobile : {row.tel_client}
                    </Typography>
                  
                </Grid>
                <Grid  >
                 <Toolbar  >
                  
-                  <ActiveLink activeClassName="" href="/customercard">
-                  <IconButton>
+                  <ActiveLink activeClassName="" href={"/customercard/"+row.id_client}>
+                  <IconButton >
                  <  EditIcon  />
                  </IconButton>
             
@@ -194,7 +193,7 @@ const Customer: React.FC = () => {
        colSpan={3}
     
        //shape="rounded"
-       count={rows.length}
+       count={20}
        rowsPerPage={rowsPerPage}
        page={page}
        component="div"
@@ -205,9 +204,7 @@ const Customer: React.FC = () => {
        }}
        onChangePage={handleChangePage}
        onChangeRowsPerPage={handleChangeRowsPerPage}
-       
-       
-        
+  
       />
       </div>
         </Grid>

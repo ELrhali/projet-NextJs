@@ -15,16 +15,36 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
 import { TextField } from '@material-ui/core';
 import { useState } from 'react';
+import QUERY_Client from '../query/QueryClient';
+import { useQuery } from '@apollo/client';
 
+interface RocketInventory  {
+  id_client: number;
+  email: String, 
+  nom_client: String,
+   note_client:String, 
+   tel_client: String, 
+   type_client: String, 
+   ville_client: String, 
+   address_client : String,
+   image_client: String,
+   zip : number
+} 
+interface RocketInventoryData {
+  length: number;
+  client: RocketInventory [];
+}
 
 const AddCustomers: React.FC = () => {
+  const { data, loading, error } = useQuery<RocketInventoryData>(QUERY_Client);
+
     const [typeCustomer ,setTypeCustomer]=useState("");
     const [NameCustomer,setNameCustomer]=useState("");
   
     const [AddressCustomer,setAddressCustomer]=useState("");
     const [PhoneCustomer,setPhoneCustomer]=useState("");
     const [EmailCustomer,setEmailCustomer]=useState("");
-    const [loading, setLoading] = useState(false);
+ 
   
   
   

@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
-import TableCell from '@material-ui/core/TableCell';
-import { darken, fade, lighten } from '@material-ui/core/styles/colorManipulator';
+
 import Typography from '@material-ui/core/Typography';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
-import classNames from 'clsx';
 import {
   Scheduler,
   MonthView,
@@ -21,13 +19,8 @@ import {
   TodayButton,
   ViewSwitcher,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import WbSunny from '@material-ui/icons/WbSunny';
-import FilterDrama from '@material-ui/icons/FilterDrama';
-import Opacity from '@material-ui/icons/Opacity';
-import ColorLens from '@material-ui/icons/ColorLens';
-import { makeStyles, Theme,createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
 
-import { Props } from 'material-ui-chip-input';
+
 import { owners } from './Tasks';
 interface appoiProp{
   id : number ;
@@ -321,11 +314,11 @@ const DayScaleCell = props => (
 //   </Toolbar.FlexibleSpace>
 // ));
 export  interface Propss {
-  id: number;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-  ownerId: number;
+  id?: number;
+  title?: string;
+  startDate?: Date;
+  endDate?: Date;
+  ownerId?: number;
   rRule?: Date;
   exDate?: Date;
  
@@ -334,10 +327,10 @@ export  interface Propss {
 
 }
 
-export default class Demo extends React.Component<Propss, any> {
+ class Agendee extends React.Component<Propss, any> {
    
   // #FOLD_BLOCK
-  constructor(props ) {
+  constructor(props:any ) {
     super(props );
 
     this.state = {
@@ -442,3 +435,4 @@ export default class Demo extends React.Component<Propss, any> {
   }
 }
 
+export default Agendee ;
