@@ -1,13 +1,15 @@
 import Head from "next/head";
-import Dashboard from "../components/pages/Dashboard";
+import Apptest from "../components/pages/test/Apptest";
 
-export default function HomePage() {
-  return (
-    <>
-      <Head>
-        <title>Dashboard</title>
-      </Head>
-      <Dashboard />
-    </>
-  );
-}
+export default function VehiculePage() {
+    return (
+      <>
+        <Head>
+          <title>Schedule</title>
+        </Head>
+        <div className="bg-gray-100 h-full	">
+         <Apptest />
+          </div>
+      </>
+    );
+  }

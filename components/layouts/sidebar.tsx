@@ -8,118 +8,120 @@ import CancelScheduleSendIcon from '@material-ui/icons/CancelScheduleSend';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import SettingsIcon from '@material-ui/icons/Settings';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 const Sidebar = () => {
   const router = useRouter();
   
   return (
-    <div  className="md:w-2/12 w-5/12 h-screen shadow-2xl 	 bg-gray-800 bg-opacity-85   ">
+    <div  className="md:w-1/5 w-1/12 h-screen 	 bg-gray-800 bg-opacity-85   ">
  
       <div className="   py-3 space-y-7 pt-4 flex h-16   justify-around  bg-gray-900 bg-opacity-60">
    
-       <p className="text-2xl  text-gray-200 font-semibold italic ">M A J O R E L</p>
+       <p className="md:text-2xl  hidden md:flex  text-gray-200 font-semibold italic "> M A J O R E L</p>
+     
 
       </div>
-      <div className="py-5 space-y-14">
-        <div className="space-y-4">
-        <ActiveLink activeClassName="bg-gray-900 border-l-2 border-fuchsia-600" href="#">
+      <div className="py-3 space-y-10">
+        <div className="space-y-3">
+        <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/">
             <div className="">
               <div
                 className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900  hover  hover:text-blue-600  cursor-pointer"
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900  hover  hover:text-blue-600  cursor-pointer"
                 }
               >
-                <HomeIcon  />
-                <p className="text-white   	">Home</p>
+                <HomeIcon className="text-gray-400" />
+                <p className="text-gray-100 hidden md:flex   	">Home</p>
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/dashboard">
             <div className="">
               <div
                 className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900  hover:text-blue-600  cursor-pointer"
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900  hover:text-blue-600  cursor-pointer"
                 }
               >
-                <Dashboard  />
-                <p className=" text-white">Dashboard</p>
+                <EqualizerIcon className="text-gray-400"  />
+                <p className=" text-gray-100 hidden md:flex">Dashboard</p>
               </div>
             </div>
           </ActiveLink>
 
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/vehicule">
-            <div className="text-white">
-              <div
-                className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
-                }
-              >
-                <DirectionsCarOutlinedIcon />
-                <p className="text-white ">Vehicles</p>
-              </div>
-            </div>
-          </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/index2">
-            <div className="text-white">
-              <div
-                className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
-                }
-              >
-                <CancelScheduleSendIcon />
-                <p className="text-white ">Schedules</p>
-              </div>
-            </div>
-          </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/tableAc">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/vehicule">
             <div className="">
               <div
                 className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <PlaylistAddCheckIcon />
-                <p className="text-white ">Checklist</p>
+                <DirectionsCarOutlinedIcon className="text-gray-400" />
+                <p className="text-gray-100 hidden md:flex ">Vehicles</p>
+              </div>
+            </div>
+          </ActiveLink>
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/agend">
+            <div className="">
+              <div
+                className={
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
+                }
+              >
+                <CancelScheduleSendIcon className="text-gray-400"  />
+                <p className="text-gray-100  hidden md:flex">Schedules</p>
+              </div>
+            </div>
+          </ActiveLink>
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/check">
+            <div className="">
+              <div
+                className={
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
+                }
+              >
+                <PlaylistAddCheckIcon className="text-gray-400"  />
+                <p className="text-gray-100 hidden md:flex ">Checklist</p>
               </div>
             </div>
           </ActiveLink>
 
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/customer">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/customer">
             <div className="">
               <div
                 className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <PermIdentityIcon className=" text-gray-200" />
-                <p className=" text-white">Customers</p>
+                <PermIdentityIcon className=" text-gray-400" />
+                <p className=" text-gray-100 hidden md:flex">Customers</p>
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="/accounts">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/accounts">
             <div className=" ">
               <div
                 className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <AccountTree className=" text-gray-200" />
-                <p className="text-white ">Accounts</p>
+                <AccountTree className=" text-gray-400" />
+                <p className="text-gray-100  hidden md:flex">Accounts</p>
               </div>
             </div>
           </ActiveLink>
         
-          <ActiveLink activeClassName="bg-gray-900 border-l-8 border-fuchsia-600" href="#">
+      {    <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-fuchsia-600" href="/Stt">
             <div className="">
               <div
                 className={
-                  "flex p-3 text-gray-700  space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
+                  "md:flex md:p-3 text-gray-700  md:space-x-4 0 hover:bg-gray-900 hover:text-blue-600  cursor-pointer"
                 }
               >
-                <SettingsIcon className=" text-white" />
-                <p className="text-white ">Settings</p>
+                <SettingsIcon className=" text-gray-400 " />
+                <p className="text-gray-100 hidden md:flex">Settings</p>
               </div>
             </div>
-          </ActiveLink>
+          </ActiveLink>}
         </div>
    
       </div></div>

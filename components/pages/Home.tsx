@@ -1,8 +1,8 @@
 import React from "react";
 
-const Dashboard: React.FC = () => {
+const Homes: React.FC = () => {
   return (
-  <div>Dashboard
+  <div>Home
     <h3>    <h3>L'informatique est un domaine d'activité scientifique, technique, et industriel concernant le traitement automatique de l'information numérique par l'exécution de programmes informatiques par des machines : des systèmes embarqués, des ordinateurs, des robots, des automates, etc.
 
 Ces champs d'application peuvent être séparés en deux branches :
@@ -169,4 +169,4 @@ Certains domaines de l'informatique peuvent être très abstraits, comme la comp
   );
 };
 
-export default Dashboard;
+export default Homes;

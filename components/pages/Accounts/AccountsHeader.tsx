@@ -12,9 +12,9 @@ const AccountsHeader: React.FC<AccountsHeaderProps> = ({ open, setOpen }) => {
   }
   return (
     <div className="p-5 bg-gray-50 shadow-lg border-gray-600 flex flex-row justify-between content-center items-center">
-      <div></div>
+      
       <Button
-        onClick={openDialog}
+   onClick={openDialog}
         variant="contained"
         color="primary"
         className="p-2"
