@@ -10,25 +10,40 @@ import {  LinearProgress } from "@material-ui/core";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
+import { gql, useMutation } from "@apollo/client";
+interface RocketInventory  {
+  numero_bus: number, 
+  matricule: String,
+   marque:String, 
+   assurance: String, 
+   note: String, 
+   image_bus:String,
+} 
+interface RocketInventoryData {
+  client: RocketInventory [];
+}
+const vehicule_MUTATION = gql`
+mutation Addvehicule( $numero_bus: Int!, 
+$matricule: String!,
+ $marque:String!, 
+ $assurance: String!, 
+ $note: String,
+ $image_bus: String, 
+) {
+  insert_bus
+  (objects: {
+    numero_bus:  $numero_bus, 
+    matricule:  $matricule,
+     marque:$marque, 
+     assurance:  $assurance, 
+     note:  $note,
+     image_bus: $image_bus  }) {
+    affected_rows
+  }
+}
 
-const currencies = [
-  {
-    value: 'AA',
-    label: 'aa',
-  },
-  {
-    value: 'BB',
-    label: 'bb',
-  },
-  {
-    value: 'CC',
-    label: 'cc',
-  },
-  {
-    value: 'DD',
-    label: 'ee',
-  },
-];
+`;
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -52,11 +67,16 @@ interface AddCustomerProps{
 
 }
 const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
+  const [bus, { error, data }] = useMutation<RocketInventoryData>(vehicule_MUTATION)
+
   const [NumbreVehicule ,setNumbreVehicule]=useState("");
   const [MatriculeVehicule,setMatriculeVehicule]=useState("");
 
   const [MarqueVehicule,setMarqueVehicule]=useState("");
   const [AssuranceVehicule,setAssuranceVehicule]=useState("");
+  const [ImageBus,setImageBus]=useState("");
+
+  const [AddNote,setAddNote]=useState("");
 
   const [loading, setLoading] = useState(false);
 
@@ -65,12 +85,29 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
   function handleClose() {
     setOpen(false);
   }
-  async function addcustomer(){
-    setLoading(true);
-    console.log();
-    setLoading(false);
-    setOpen(false);
+  const Addvehicule =() =>{
+  
+    bus({
+      variables: {
+        numero_bus: NumbreVehicule ,
+        matricule: MatriculeVehicule,
+        marque: MarqueVehicule ,
+        assurance: AssuranceVehicule,
+        note: AddNote,
+        image_bus: ImageBus,
+    
+      }
+      
+    })
+  if( error){
+    console.log(error);
   }
+  console.log(data);
+  setOpen(false);
+  setLoading(true);
+  setLoading(false);
+  }
+  ;
   return(
     <Dialog 
      open={open}
@@ -83,28 +120,22 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
         <div>
       <form className={classes.root} noValidate autoComplete="off">
       <TextField
-          select
           autoFocus
           margin="dense"
-          id="TypeCustomer"
+          id="NumbreVehicule"
           multiline
-          label="Type Customer"
+          label="Numbre Vehicule "
           onChange={({ target }) => setNumbreVehicule(target.value)}
-          helperText="Please select your currency"
-        >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-          </TextField>
+          type="text"
+        
+        />  
       
         <TextField
           autoFocus
           margin="dense"
-          id="NameCustomer"
+          id="MatriculeVehicule"
           multiline
-          label="Name Customer "
+          label="Matricule "
           onChange={({ target }) => setMatriculeVehicule(target.value)}
           type="text"
         
@@ -112,9 +143,9 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
         <TextField
           autoFocus
           margin="dense"
-          id="AddressCustomer"
+          id="MarqueVehicule"
           multiline
-          label="Address Customer"
+          label="Marque"
           onChange={({ target }) => setMarqueVehicule(target.value)}
           type="text"
           
@@ -126,13 +157,22 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
           fullWidth
           margin="dense"
           multiline
-          id="PhoneCustomer"
-          label="Phone Customer"
+          id="AssuranceVehicule"
+          label="Assurance"
           //variant="filled" background
           onChange={({ target }) => setAssuranceVehicule(target.value)}
           type="text"
         />
-     
+     <TextField
+          autoFocus
+          margin="dense"
+          id="NumbreVehicule"
+          multiline
+          label="Image Vehicule "
+          onChange={({ target }) => setImageBus(target.value)}
+          type="text"
+        
+        />  
         
         
         </form></div>
@@ -140,6 +180,7 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
         <textarea cols={4}
         rows={10}
         placeholder="Add note"
+        onChange={({ target }) => setAddNote(target.value)}
          style={{  width: '100%' ,background:'#EFEFEF'}}
         /></div>
       </DialogContent>
@@ -151,7 +192,7 @@ const AddVehicule: React.FC<AddCustomerProps> = ({open , setOpen}) => {
         </Button>
         <Button
           disabled={loading}
-          onClick={addcustomer}
+          onClick={Addvehicule}
           variant="contained"
           color="primary"
         >

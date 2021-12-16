@@ -48,7 +48,7 @@ const Vehicule: React.FC = () => {
               <Grid item xs container direction="column" spacing={3}>
                 <Grid item xs>
                 <Typography variant="body2" >
-                      5586
+                      49
                       </Typography>
                       <Typography variant="body2" >
                       Total Trips
@@ -82,7 +82,7 @@ const Vehicule: React.FC = () => {
                   <Grid item xs container direction="column" spacing={3}>
                     <Grid item xs>
                     <Typography variant="body2" color="primary">
-                      125
+                      3
                       </Typography>
                       <Typography variant="body2" >
                       Total Path
@@ -116,7 +116,7 @@ const Vehicule: React.FC = () => {
                   <Grid item xs container direction="column" spacing={3}>
                     <Grid item xs>
                       <Typography variant="body2" color="secondary" >
-                      265
+                      8
                       </Typography>
                       <Typography variant="body2" >
                       Total Pssengers

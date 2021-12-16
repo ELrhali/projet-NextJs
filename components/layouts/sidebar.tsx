@@ -23,7 +23,7 @@ const Sidebar = () => {
       </div>
       <div className="py-3 space-y-10">
         <div className="space-y-3">
-        <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/">
+        <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/home">
             <div className="">
               <div
                 className={
@@ -35,7 +35,7 @@ const Sidebar = () => {
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/dashboard">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/">
             <div className="">
               <div
                 className={
@@ -43,7 +43,7 @@ const Sidebar = () => {
                 }
               >
                 <EqualizerIcon className="text-gray-400"  />
-                <p className=" text-gray-100 hidden md:flex">Dashboard</p>
+                <p className="text-gray-100 hidden md:flex   	">Dashboard</p>
               </div>
             </div>
           </ActiveLink>
@@ -72,7 +72,7 @@ const Sidebar = () => {
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="#">
+          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/check">
             <div className="">
               <div
                 className={
@@ -80,7 +80,7 @@ const Sidebar = () => {
                 }
               >
                 <PlaylistAddCheckIcon className="text-gray-400"  />
-                <p className="text-gray-100 hidden md:flex ">Checklist</p>
+                <p className="text-gray-100 hidden md:flex ">Check State</p>
               </div>
             </div>
           </ActiveLink>
@@ -97,7 +97,7 @@ const Sidebar = () => {
               </div>
             </div>
           </ActiveLink>
-          <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/accounts">
+          {/* <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-gray-500" href="/accounts">
             <div className=" ">
               <div
                 className={
@@ -108,9 +108,9 @@ const Sidebar = () => {
                 <p className="text-gray-100  hidden md:flex">Accounts</p>
               </div>
             </div>
-          </ActiveLink>
+          </ActiveLink> */}
         
-      {    <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-fuchsia-600" href="#">
+      {    <ActiveLink activeClassName="bg-gray-900 md:border-l-8 border-fuchsia-600" href="/Stt">
             <div className="">
               <div
                 className={

@@ -1,21 +1,26 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import SearchIcon from '@material-ui/icons/Search';
-import { TextField } from '@material-ui/core';
+import { Avatar, CardActions, IconButton, TextField, Typography } from '@material-ui/core';
 import { Badge } from '@material-ui/core';
 import { Menu } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import ForumIcon from '@material-ui/icons/Forum';
-import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
+import Dialog, { DialogProps } from '@material-ui/core/Dialog';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
 
+import CardContent from '@material-ui/core/CardContent';
+
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
 
 
     const Header = () => {
@@ -42,6 +47,15 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
       const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
       };
+      const [open, setOpen] = React.useState(false);
+
+      const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
       const menuId = 'primary-search-account-menu';
       const renderMenu = (
         <Menu
@@ -54,9 +68,52 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
           onClose={handleMenuClose}
         >
           <MenuItem onClick={handleMenuClose}    >
-            <a href="/">Profileeee</a>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+    Profil
+      </Button>
+      <Dialog
+       
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="max-width-dialog-title"
+      >
+         <Card >
+      <CardHeader
+        avatar={
+          <Avatar src="my.jpeg" alt="My Avatar" />  
+        }
+     
+        title="mohammed elrhali"
+        subheader="id : 153  juin 18, 2021"
+      />
+ 
+      <CardContent>
+     
+      <Typography variant="caption" component="h5" display="block" gutterBottom>
+        Email : mohammed.elrhali@etu.uae.ac.ma
+      </Typography>
+      
+        <Typography variant="caption" display="block" gutterBottom>
+        User-Name : moelrhali
+      </Typography>
+      <Typography variant="caption" display="block" gutterBottom>
+        Phone : 0674865850
+      </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
+      
+      </CardActions>
+     
+    </Card>
+      </Dialog>
           </MenuItem>
-          <MenuItem onClick={handleMenuClose}> <a href="/accounts">My account</a></MenuItem>
+          <MenuItem onClick={handleMenuClose}>  <Button variant="outlined" color="primary" ><a href="https://dev-iikg29cd.us.auth0.com/login?client=SghcHyJNEySABm60178wwudO1bv0DVAZ&protocol=oauth2&response_type=token%20id_token&redirect_uri=http://localhost:3000/callback&scope=openid%20profile">Login out</a></Button></MenuItem>
          
         </Menu>
         
@@ -133,7 +190,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
               <Tooltip title="Alerts • No alerts">
                 
                 <IconButton color="inherit">
-                <Badge variant="dot" color="error">
+                <Badge color="error">
                   <ForumIcon className="text-gray-400"/>
                   </Badge>
                 </IconButton>

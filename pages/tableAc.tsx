@@ -2,9 +2,9 @@ import { TextField } from "@material-ui/core";
 import { Formik ,Form} from "formik";
 import * as React from "react";
 interface Values {
-  firs : string ;
-  last :string;
-  email :string ;
+  firs : String ;
+  last :String;
+  email :String ;
 };
 interface Props {
   onSubmit: (values: Values) => void ;
@@ -13,7 +13,7 @@ interface Props {
  const MyFrom : React.FC<Props> = ({ onSubmit   }) => {
   return(
     <div className="text-gray-900">
-    <Formik  initialValues={{  firs: "", last : "", email : ""}} 
+    <Formik  initialValues={{  firs: "ééé", last : "", email : ""}} 
      onSubmit={values => {
        onSubmit(values);
      }

@@ -24,12 +24,12 @@ function createData(rfidid :number, retard :number, localion :string,  name :str
 };
 
 const rows = [
-  createData( 3746,752,'Meghogha','name'),
-  createData( 3746,752,'Meghogha','name'),
-  createData( 3746,752,'Meghogha','name'),
-  createData( 3746,752,'Meghogha','name'),
-  createData( 3746,752,'Meghogha','name'),
-  createData( 3746,752,'Meghogha','name'),
+  createData( 31,50,'Mesnana','Hassan'),
+  createData( 32,51,'Iberia','ayman'),
+  createData( 33,31,'Meghogha','Mohamed'),
+  createData( 34,61,'Meghogha','Rhali'),
+  createData( 36,50,'Bni Makada','Rami'),
+  
 
 
 ];

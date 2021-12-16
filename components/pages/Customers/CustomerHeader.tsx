@@ -11,14 +11,14 @@ const CustomersHeader: React.FC<CustomersHeaderProps> = ({ open, setOpen }) => {
     setOpen(true);
   }
   return (
-    <div className="p-5 bg-gray-50 shadow-lg border-gray-600 flex flex-row-reverse content-center items-center">      <div></div>
+    <div className="p-5   flex flex-row-reverse content-center items-center">     <br/>
       <Button
         onClick={openDialog}
         variant="contained"
         color="primary"
         className="p-2"
       >
-        Add Customre
+        Add Customer
       </Button>
     </div>
     

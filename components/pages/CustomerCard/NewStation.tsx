@@ -60,7 +60,7 @@ const AddStation: React.FC<AddCustomerProps> = ({open , setOpen}) => {
      fullWidth
     maxWidth="md"
     aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">New Station</DialogTitle>
+        <DialogTitle id="form-dialog-title text-xl text-gray-600">New Station</DialogTitle>
       <DialogContent >
         <div>
       <form className={classes.root} noValidate autoComplete="off">

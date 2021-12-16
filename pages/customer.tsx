@@ -9,7 +9,9 @@ export default function CustomePage() {
       <Head>
         <title>Customer</title>
       </Head>
+      <div className="bg-gray-100	h-screen">
       <Customer />
+      </div>
     </>
   );
 }

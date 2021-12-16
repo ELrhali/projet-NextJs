@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Agendee from "../components/pages/Agendaa/Agendee";
+import Agendaa from "../components/pages/Agendaa/Agendaa";
 
 export default function VehiculePage() {
     return (
@@ -7,8 +7,8 @@ export default function VehiculePage() {
         <Head>
           <title>Schedule</title>
         </Head>
-        <div className="bg-gray-100	">
-          <Agendee />
+        <div className="bg-gray-100	h-screen">
+          <Agendaa />
           </div>
       </>
     );

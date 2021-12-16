@@ -1,13 +1,17 @@
+import Dashboard from "components/pages/Dashboards/Dashboard";
 import Head from "next/head";
-import Home from "../components/pages/Home";
+import React from "react";
 
-export default function HomePage() {
+
+
+
+export default function DashboardPage() {
   return (
     <>
       <Head>
         <title>Dashboard</title>
       </Head>
-      <Home />
+     <Dashboard />
     </>
   );
 }

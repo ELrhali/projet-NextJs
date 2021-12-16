@@ -23,25 +23,7 @@ const useStyles = makeStyles({
 });
 
 
-function path1(){
-return (
-    <div className="inline-flex space-x-4">
-    <label className="flex-1 ">From</label>
-    <RoomIcon  fontSize="small"/>
-    
-   
 
-
-<label className="flex-1 ">to</label>
-
-    
-    <RoomIcon  fontSize="small"/>
-
-       
-        
-  </div>
-)
-};
 interface Data {
   path ;
   StartAt: string;
@@ -52,8 +34,8 @@ interface Data {
   Station: number;
 
 }
-function createData(path , StartAt :string, EndAt :string, Period :string,  Distance :string,Passengers :number,Station :number) {
-  return { path, StartAt, EndAt, Period, Distance,Passengers,Station};
+function createData(from, to, StartAt :string, EndAt :string, Period :string,  Distance :string,Passengers :number,Station :number) {
+  return { from,to, StartAt, EndAt, Period, Distance,Passengers,Station};
 };
 function buton(){
   const [open, setOpen] = React.useState(false);
@@ -70,18 +52,13 @@ function buton(){
   
 };
 const rows = [
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
+  createData("TFZ" ,"Mesnana","7:15AM", "7:55 AM", "40 min", "20 Km",2,1),
+  createData("Iberia","TangeMed","8:15AM", "9:00 AM", "45 min", "18 Km",3,3),
 
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
+  createData("Marjane","Mgogha","7:20AM", "7:55 AM", "35 min", "11 Km",2,1),
+  createData("Marjane","TFZ","7:20AM", "7:55 AM", "35 min", "11 Km",3,1),
 
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
 
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
-
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
-
-  createData(path1(),"7:15AM", "7:55 AM", "40 min", "9 Km",23,12),
 
 
 
@@ -121,12 +98,26 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-        {rows.slice(0, postNum).map((row) => (
+        {rows.slice(0, postNum).map((row,i) => (
     
-            <TableRow key={row.path}>
+            <TableRow key={i}>
 
                  <TableCell className="text-xs " align="center" >
-                   {row.path}
+                 <div className="inline-flex space-x-4">
+    <label className="flex-1 ">{row.from}</label>
+    <RoomIcon  fontSize="small"/>
+    
+   
+
+
+<label className="flex-1 ">{row.to}</label>
+
+    
+    <RoomIcon  fontSize="small"/>
+
+       
+        
+  </div>
                    </TableCell>
               <TableCell align="center">
                 {row.StartAt}

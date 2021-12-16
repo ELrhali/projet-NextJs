@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
-import TableCell from '@material-ui/core/TableCell';
-import { darken, fade, lighten } from '@material-ui/core/styles/colorManipulator';
+
 import Typography from '@material-ui/core/Typography';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
-import classNames from 'clsx';
 import {
   Scheduler,
   MonthView,
@@ -21,13 +19,8 @@ import {
   TodayButton,
   ViewSwitcher,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import WbSunny from '@material-ui/icons/WbSunny';
-import FilterDrama from '@material-ui/icons/FilterDrama';
-import Opacity from '@material-ui/icons/Opacity';
-import ColorLens from '@material-ui/icons/ColorLens';
-import { makeStyles, Theme,createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
 
-import { Props } from 'material-ui-chip-input';
+
 import { owners } from './Tasks';
 interface appoiProp{
   id : number ;
@@ -51,28 +44,30 @@ const appointments = [
     rRule: 'FREQ=WEEKLY;BYDAY=TU'
   }, {
     id: 1,
-    title: 'Monthly Planning',
-    startDate: new Date(2018, 5, 28, 9, 30),
-    endDate: new Date(2018, 5, 28, 11, 30),
+    title: 'TFZ  Rond-Point-Marjane',
+    startDate: new Date(2021, 5, 20, 12, 30),
+    endDate: new Date(2021, 5, 20, 13, 30),
     ownerId: 1,
   }, {
     id: 2,
-    title: 'Recruiting students',
-    startDate: new Date(2018, 6, 9, 12, 0),
-    endDate: new Date(2018, 6, 9, 13, 0),
+    title: 'TFZ  Rond-Point-Marjane',
+    startDate: new Date(2021, 5, 21, 12, 0),
+    endDate: new Date(2021, 5, 21, 13, 0),
     ownerId: 2,
+    rRule: 'FREQ=WEEKLY;BYDAY=TU',
+    exDate: '20180710T080000Z,20180724T080000Z',
   
   }, {
     id: 3,
     title: 'Oil Painting',
-    startDate: new Date(2021,2, 18, 14, 30),
-    endDate: new Date(2021,2, 19, 15, 30),
-    ownerId: 2,
+    startDate: new Date(2021,5, 20, 14, 30),
+    endDate: new Date(2021,5, 20, 15, 30),
+    // ownerId: 2,
   }, {
     id: 4,
     title: 'Open Day',
-    startDate: new Date(2021, 6, 20, 12, 0),
-    endDate: new Date(2021, 6, 20, 13, 35),
+    startDate: new Date(2021, 6, 20, 8, 0),
+    endDate: new Date(2021, 6, 20, 9, 35),
     ownerId: 6,
   }, {
     id: 5,
@@ -92,15 +87,13 @@ const appointments = [
     ownerId: 5,
   }, {
     id: 7,
-    title: 'Oil Painting for Beginners',
+    title: 'TFZ  Rond-Point-Marjane',
     startDate: new Date(2021, 4, 3, 11, 0),
     endDate: new Date(2021, 4, 3, 12, 1),
-    rRule: 'FREQ=WEEKLY;BYDAY=TU',
-    exDate: '20180710T080000Z,20180724T080000Z',
-    ownerId: 3,
+   
   }, {
     id: 8,
-    title: 'Watercolor Workshop',
+    title: 'TFZ  Rond-Point-Marjane	',
     startDate: new Date(2021, 6, 9, 11, 11),
     endDate: new Date(2021, 6, 9, 12, 0),
     ownerId: 3,
@@ -108,8 +101,22 @@ const appointments = [
   {
     id: 8,
     title: 'Watercolor Workshop',
-    startDate: new Date(2021 , 4, 9, 2, 11),
-    endDate: new Date(2021, 4, 9, 3, 0),
+    startDate: new Date(2021 , 7, 9, 2, 11),
+    endDate: new Date(2021, 7, 9, 3, 0),
+    ownerId: 3,
+  },
+  {
+    id: 85,
+    title: 'Watercolor Workshop',
+    startDate: new Date(2021 , 6, 19, 2, 11),
+    endDate: new Date(2021, 6, 19, 3, 0),
+    ownerId: 3,
+  },
+  {
+    id: 74,
+    title: 'Watercolor Workshop',
+    startDate: new Date(2021 , 5, 9, 2, 11),
+    endDate: new Date(2021, 5, 9, 3, 0),
     ownerId: 3,
   },
 ];
@@ -321,11 +328,11 @@ const DayScaleCell = props => (
 //   </Toolbar.FlexibleSpace>
 // ));
 export  interface Propss {
-  id: number;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-  ownerId: number;
+  id?: number;
+  title?: string;
+  startDate?: Date;
+  endDate?: Date;
+  ownerId?: number;
   rRule?: Date;
   exDate?: Date;
  
@@ -334,10 +341,10 @@ export  interface Propss {
 
 }
 
-export default class Demo extends React.Component<Propss, any> {
+ class Agendee extends React.Component<Propss, any> {
    
   // #FOLD_BLOCK
-  constructor(props ) {
+  constructor(props:any ) {
     super(props );
 
     this.state = {
@@ -378,7 +385,7 @@ export default class Demo extends React.Component<Propss, any> {
             onCommitChanges={this.commitChanges}
           />
           <ViewState
-            defaultCurrentDate="2021-05-17"
+            defaultCurrentDate="2021-06-20"
           />
            <MonthView
             
@@ -442,3 +449,4 @@ export default class Demo extends React.Component<Propss, any> {
   }
 }
 
+export default Agendee ;

@@ -27,12 +27,16 @@ function createData(id: number, name: string, rfid: String, station: String , ph
 }
 
 const rows = [
-  createData( 1 , 'Passenger[Name]', 'Passenger[id]', 'Passenger[Phone Number]', 'Passenger[Station]' , 432),
-  createData( 2 , 'Passenger[Name]', 'Passenger[id]', 'Passenger[Phone Number]', 'Passenger[Station]' , 432),
-  createData( 3 , 'Passenger[Name]', 'Passenger[id]', 'Passenger[Phone Number]', 'Passenger[Station]' , 432),
-  createData( 4 , 'Passenger[Name]', 'Passenger[id]', 'Passenger[Phone Number]', 'Passenger[Station]' , 432),
-  createData( 5 , 'Passenger[Name]', 'Passenger[id]', 'Passenger[Phone Number]', 'Passenger[Station]' , 432),
- 
+
+    createData( 1 , 'Rami Ayman', '3501', '0719280293', 'Mesnana' , 50 ),
+    createData( 2 , 'El Rhali Mohammed', '3502', '0627382012', 'Iberia' , 76 ),
+    createData( 3 , 'fares yassine', '3603', '0661829302', 'Riad Tetouan' , 77),
+    createData( 4 , 'firdaous filali', '3704', '0671928392', 'Dradeb' , 78),
+    createData( 5 , 'Alaoui imane', '3805', '06178203920', 'Iberia' , 79),
+    createData( 6 , 'Naima yassine', '3706', '0671928392', 'Rond-Point-Marjane' , 80),
+
+    createData( 8 , 'Badr ghali ', '1234', '0612345678', 'Bni lala' , 80 ),
+
   
 ];
 

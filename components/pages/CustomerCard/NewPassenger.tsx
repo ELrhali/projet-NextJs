@@ -63,7 +63,7 @@ const NewPassenger: React.FC<AddCustomerProps> = ({open , setOpen}) => {
      fullWidth
         maxWidth="md"
     aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">New Vehicule</DialogTitle>
+        <DialogTitle id="form-dialog-title">New Passanger</DialogTitle>
       <DialogContent >
         <div>
       <form className={classes.root} noValidate autoComplete="off">
