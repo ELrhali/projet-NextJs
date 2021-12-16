@@ -23,7 +23,7 @@ const Checkheader: React.FC = () => {
         
         <Grid container spacing={2} className=" px-10 pb-10">
           <Grid item xs={11} className="relative " >
-            <p className="absolute bottom-0 left-0 text-xl  text-gray-800">Check State</p>
+            <p className="absolute bottom-0 left-0 text-xl  text-gray-800">Check State 2</p>
           </Grid>
           <Grid item xs={1} className="relative ">
                  <IconButton className=" absolute bottom-0 right-0">

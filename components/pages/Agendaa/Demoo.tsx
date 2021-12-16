@@ -77,13 +77,7 @@ export const appointments = [
     endDate: new Date(2018, 5, 29, 11, 30),
     id: 12,
     location: 'Room 2',
-  }, {
-    title: 'Upgrade Server Hardware',
-    startDate: new Date(2018, 5, 29, 14, 30),
-    endDate: new Date(2018, 5, 29, 16, 0),
-    id: 13,
-    location: 'Room 3',
-  }, {
+  },  {
     title: 'Submit New Website Design',
     startDate: new Date(2018, 5, 29, 16, 30),
     endDate: new Date(2018, 5, 29, 18, 0),
@@ -233,12 +227,5 @@ export const appointments = [
     endDate: new Date(2018, 6, 3, 14, 30),
     id: 38,
     location: 'Room 2',
-  }, {
-    title: 'Customer Workshop',
-    startDate: new Date(2018, 6, 1),
-    endDate: new Date(2018, 6, 2),
-    allDay: true,
-    id: 39,
-    location: 'Room 1',
-  },
+  }, 
 ];
