@@ -49,7 +49,7 @@ export default function BasicTable() {
     <TableContainer component={Paper} >
     <div className="p-5"> 
         <Typography variant="h6"  color="textSecondary">
-        Passengers Report
+        Passengers Report.
         </Typography>
     </div>
       <Table  aria-label="simple table " >
