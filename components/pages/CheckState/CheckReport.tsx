@@ -20,7 +20,7 @@ function createData(LOCATION: string, Card: number, Scheduled: string, Arrival: 
 
 const rows = [
 
-  createData('Mesnana', 3501, '7:30', '7:30', 'At Time', 'Rami Ayman', 50),
+  createData('Mesnana', 351, '7:30', '7:30', 'At Time', 'Rami Ayman', 50),
   createData('Iberia', 3502, '7:39', '7:41', 'late', 'El Rhali Mohammed', 76),
 
 
