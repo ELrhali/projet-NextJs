@@ -26,8 +26,8 @@ const rows = [
   createData( 3501,50,'Mesnana','Rami Ayman'),
   createData( 3502,76,'Iberia','El Rhali Mohammed'),
   createData( 3503,10,'Riad Tetouan','Fares yassine'),
-  createData( 3504,12,'Dradeb','firdaous filali'),
-  createData( 3505,79,'Iberia','Alaoui imane'),
+ 
+  createData( 3505,79,'Iberia','imane'),
   createData( 35011,80,'Bni Makada','Badr'),
   createData( 3506,12,'Bni Makada','Naima yassine'),
 
@@ -49,7 +49,7 @@ export default function BasicTable() {
     <TableContainer component={Paper} >
     <div className="p-5"> 
         <Typography variant="h6"  color="textSecondary">
-        Passengers Report.
+        Passengers .
         </Typography>
     </div>
       <Table  aria-label="simple table " >
